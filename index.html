@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio of Gobika N — Electronics and Communication Engineering student learning Data Analytics.">
+  <title>Gobika N | Data Analytics Portfolio</title>
+  <style>
+    :root {
+      --bg: #0b1120;
+      --panel: #111b2e;
+      --panel-2: #15233a;
+      --text: #eef4ff;
+      --muted: #a8b6cc;
+      --accent: #55e0c1;
+      --accent-2: #85a8ff;
+      --line: rgba(168,182,204,.18);
+      --shadow: 0 18px 50px rgba(0,0,0,.22);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at 80% 0%, #172b48 0, transparent 35%), var(--bg);
+      color: var(--text); line-height: 1.65;
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(1100px, calc(100% - 40px)); margin: auto; }
+    header { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(16px); background: rgba(11,17,32,.82); border-bottom: 1px solid var(--line); }
+    nav { min-height: 72px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-weight: 800; letter-spacing: .4px; font-size: 1.1rem; }
+    .brand span { color: var(--accent); }
+    .nav-links { display: flex; gap: 22px; align-items: center; color: var(--muted); font-size: .93rem; }
+    .nav-links a:hover { color: var(--accent); }
+    .menu-btn { display: none; background: transparent; color: var(--text); border: 1px solid var(--line); border-radius: 10px; padding: 8px 12px; }
+    .hero { min-height: 82vh; display: grid; grid-template-columns: 1.3fr .7fr; align-items: center; gap: 56px; padding: 76px 0 82px; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--accent); font-size: .83rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.8px; }
+    .eyebrow:before { content: ""; width: 28px; height: 2px; background: var(--accent); }
+    h1 { font-size: clamp(2.7rem, 6vw, 5.2rem); line-height: 1.04; letter-spacing: -2.5px; margin: 20px 0; }
+    h1 span { color: var(--accent); }
+    .hero p { max-width: 640px; color: var(--muted); font-size: 1.08rem; }
+    .actions { display: flex; gap: 13px; flex-wrap: wrap; margin-top: 28px; }
+    .btn { display: inline-flex; justify-content: center; align-items: center; gap: 8px; padding: 12px 18px; border-radius: 12px; font-weight: 750; border: 1px solid var(--line); transition: transform .2s, background .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--accent); color: #07131b; border-color: var(--accent); }
+    .btn-secondary { background: rgba(255,255,255,.03); }
+    .hero-card { position: relative; background: linear-gradient(145deg, rgba(85,224,193,.13), rgba(133,168,255,.08)); border: 1px solid var(--line); border-radius: 26px; padding: 28px; box-shadow: var(--shadow); overflow: hidden; }
+    .hero-card:after { content: "</>"; position: absolute; right: 14px; top: 4px; font-size: 5rem; font-weight: 900; color: rgba(85,224,193,.08); }
+    .avatar { width: 82px; height: 82px; border-radius: 22px; display: grid; place-items: center; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #07131b; font-size: 1.65rem; font-weight: 900; margin-bottom: 20px; }
+    .hero-card h2 { margin: 0 0 4px; font-size: 1.35rem; }
+    .hero-card .sub { color: var(--muted); margin: 0 0 20px; }
+    .quick-facts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .fact { padding: 13px; border: 1px solid var(--line); border-radius: 13px; background: rgba(8,14,26,.28); }
+    .fact strong { display: block; font-size: 1.12rem; color: var(--accent); }
+    .fact span { font-size: .78rem; color: var(--muted); }
+    section { padding: 76px 0; }
+    .section-heading { margin-bottom: 30px; }
+    .section-heading h2 { font-size: clamp(1.8rem, 4vw, 2.6rem); margin: 8px 0; letter-spacing: -1px; }
+    .section-heading p { color: var(--muted); margin: 0; max-width: 680px; }
+    .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 24px; }
+    .card { background: rgba(17,27,46,.82); border: 1px solid var(--line); border-radius: 20px; padding: 25px; box-shadow: var(--shadow); }
+    .card p { color: var(--muted); margin-top: 8px; }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 17px; }
+    .tag { border: 1px solid rgba(85,224,193,.25); background: rgba(85,224,193,.07); color: #c9fff2; padding: 7px 11px; border-radius: 999px; font-size: .84rem; }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .skill-card h3 { margin: 0; font-size: 1.05rem; }
+    .skill-card p { font-size: .92rem; }
+    .skill-icon { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 12px; background: rgba(133,168,255,.13); color: var(--accent-2); font-weight: 900; margin-bottom: 15px; }
+    .timeline { display: grid; gap: 16px; }
+    .timeline-item { display: grid; grid-template-columns: 170px 1fr; gap: 22px; padding: 22px 24px; background: rgba(17,27,46,.72); border: 1px solid var(--line); border-radius: 17px; }
+    .date { color: var(--accent); font-size: .88rem; font-weight: 750; }
+    .timeline-item h3 { margin: 0 0 3px; }
+    .timeline-item .meta { color: var(--muted); font-size: .9rem; }
+    .timeline-item p { color: var(--muted); margin: 9px 0 0; }
+    .project-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+    .project-card { display: flex; flex-direction: column; min-height: 255px; }
+    .project-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 15px; }
+    .project-number { color: var(--accent); font-weight: 900; font-size: .9rem; }
+    .status { white-space: nowrap; font-size: .75rem; border: 1px solid var(--line); padding: 5px 9px; border-radius: 999px; color: var(--muted); }
+    .project-card h3 { margin: 15px 0 4px; }
+    .project-card p { color: var(--muted); margin: 6px 0 15px; }
+    .project-card .tag-list { margin-top: auto; }
+    .note { border-left: 3px solid var(--accent); padding: 12px 15px; background: rgba(85,224,193,.06); color: var(--muted); border-radius: 0 10px 10px 0; font-size: .9rem; margin-top: 18px; }
+    .cert-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+    .cert { display: flex; gap: 14px; align-items: flex-start; }
+    .cert-mark { flex: 0 0 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; background: rgba(85,224,193,.12); color: var(--accent); font-weight: 900; }
+    .cert h3 { margin: 0; font-size: 1rem; }
+    .cert p { margin: 3px 0 0; color: var(--muted); font-size: .9rem; }
+    .contact-panel { display: grid; grid-template-columns: 1fr auto; gap: 25px; align-items: center; background: linear-gradient(120deg, rgba(85,224,193,.12), rgba(133,168,255,.1)); border: 1px solid var(--line); border-radius: 24px; padding: 34px; }
+    .contact-panel h2 { margin: 0 0 8px; font-size: clamp(1.8rem, 4vw, 2.5rem); }
+    .contact-panel p { color: var(--muted); margin: 0; }
+    .contact-links { display: flex; flex-direction: column; gap: 10px; min-width: 220px; }
+    footer { padding: 28px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: .86rem; }
+    footer .container { display: flex; justify-content: space-between; gap: 15px; flex-wrap: wrap; }
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; gap: 28px; min-height: auto; padding-top: 62px; }
+      .hero-card { max-width: 500px; }
+      .about-grid, .skills-grid { grid-template-columns: 1fr 1fr; }
+      .timeline-item { grid-template-columns: 1fr; gap: 7px; }
+      .contact-panel { grid-template-columns: 1fr; }
+      .contact-links { flex-direction: row; flex-wrap: wrap; }
+    }
+    @media (max-width: 560px) {
+      .container { width: min(100% - 28px, 1100px); }
+      .nav-links { display: none; position: absolute; top: 71px; left: 0; right: 0; padding: 18px 22px; background: #0b1120; border-bottom: 1px solid var(--line); flex-direction: column; align-items: flex-start; }
+      .nav-links.open { display: flex; }
+      .menu-btn { display: inline-flex; }
+      h1 { letter-spacing: -1.6px; }
+      section { padding: 55px 0; }
+      .about-grid, .skills-grid, .project-grid, .cert-grid { grid-template-columns: 1fr; }
+      .card { padding: 21px; }
+      .contact-panel { padding: 24px; }
+      .contact-links { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container" aria-label="Main navigation">
+      <a class="brand" href="#home">GOBIKA<span>.</span></a>
+      <button class="menu-btn" id="menuBtn" aria-label="Toggle navigation" aria-expanded="false">Menu ☰</button>
+      <div class="nav-links" id="navLinks">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#education">Education</a>
+        <a href="#projects">Projects</a><a href="#certifications">Certifications</a><a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="container hero" id="home">
+      <div>
+        <div class="eyebrow">ECE Student · Aspiring Data Analyst</div>
+        <h1>Hi, I'm<br><span>Gobika N.</span></h1>
+        <p>Electronics and Communication Engineering student building skills in data analytics, problem-solving, and technical project development. I enjoy turning information into clear insights and exploring how technology can solve real-world problems.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#projects">Explore my work ↘</a>
+          <a class="btn btn-secondary" href="#contact">Get in touch</a>
+        </div>
+      </div>
+      <aside class="hero-card" aria-label="Profile summary">
+        <div class="avatar">GN</div>
+        <h2>Gobika N</h2>
+        <p class="sub">B.E. Electronics & Communication Engineering</p>
+        <div class="quick-facts">
+          <div class="fact"><strong>2023–27</strong><span>Expected graduation</span></div>
+          <div class="fact"><strong>7.52</strong><span>Current CGPA</span></div>
+          <div class="fact"><strong>IoT</strong><span>Project experience</span></div>
+          <div class="fact"><strong>Analytics</strong><span>Currently learning</span></div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading"><div class="eyebrow">A little about me</div><h2>Curious mind. Practical approach.</h2><p>My background in electronics helps me approach problems logically, while my data analytics training is helping me develop skills to find patterns and communicate insights.</p></div>
+        <div class="about-grid">
+          <div class="card">
+            <h3>My profile</h3>
+            <p>I am pursuing a B.E. in Electronics and Communication Engineering at Dr. N.G.P. Institute of Technology, Coimbatore. Alongside my degree, I am learning SQL, Python, Power BI, Tableau, and Advanced Excel through Career Ladder Hopes.</p>
+            <p>My academic projects have introduced me to sensor-based systems, microcontrollers, real-time monitoring, and technical collaboration. I am currently developing a retail sales data analysis practice project.</p>
+          </div>
+          <div class="card">
+            <h3>What I bring</h3>
+            <div class="tag-list"><span class="tag">Analytical thinking</span><span class="tag">Problem-solving</span><span class="tag">Teamwork</span><span class="tag">Communication</span><span class="tag">Sensor integration</span><span class="tag">Continuous learning</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <div class="container">
+        <div class="section-heading"><div class="eyebrow">Toolkit</div><h2>Skills & technologies</h2><p>Tools and capabilities listed in my current resume. Analytics tools are part of my ongoing learning journey.</p></div>
+        <div class="skills-grid">
+          <div class="card skill-card"><div class="skill-icon">DA</div><h3>Data Analytics</h3><p>Data preparation and cleaning, exploratory analysis, reporting, and data visualization.</p><div class="tag-list"><span class="tag">Data cleaning</span><span class="tag">Exploratory analysis</span><span class="tag">Reporting</span></div></div>
+          <div class="card skill-card"><div class="skill-icon">&lt;/&gt;</div><h3>Tools & Languages</h3><p>Developing practical familiarity with analytics tools and programming.</p><div class="tag-list"><span class="tag">SQL</span><span class="tag">Python</span><span class="tag">Power BI</span><span class="tag">Tableau</span><span class="tag">Advanced Excel</span><span class="tag">C</span></div></div>
+          <div class="card skill-card"><div class="skill-icon">IoT</div><h3>ECE & IoT</h3><p>Foundational experience with connected devices and technical project concepts.</p><div class="tag-list"><span class="tag">IoT fundamentals</span><span class="tag">Sensor data acquisition</span><span class="tag">Technical problem-solving</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <div class="container">
+        <div class="section-heading"><div class="eyebrow">Learning journey</div><h2>Education & training</h2></div>
+        <div class="timeline">
+          <article class="timeline-item"><div class="date">2023 – 2027 (Expected)</div><div><h3>B.E. Electronics and Communication Engineering</h3><div class="meta">Dr. N.G.P. Institute of Technology · Coimbatore</div><p>CGPA: 7.52</p></div></article>
+          <article class="timeline-item"><div class="date">2021 – 2023</div><div><h3>Higher Secondary Education</h3><div class="meta">Tagore Matric Higher Secondary School · Salem</div><p>Score: 72.45%</p></div></article>
+          <article class="timeline-item"><div class="date">Currently pursuing</div><div><h3>Data Analytics Course</h3><div class="meta">Career Ladder Hopes</div><p>Learning SQL, Python, Power BI, Tableau, and Advanced Excel.</p></div></article>
+          <article class="timeline-item"><div class="date">June 2025</div><div><h3>In-plant Training</h3><div class="meta">Innovate Engineering Products · Coimbatore</div><p>Exposure to engineering product development, manufacturing workflows, design concepts, and quality practices.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading"><div class="eyebrow">Selected work</div><h2>Projects</h2><p>A mix of IoT concepts and developing analytics work. Project descriptions reflect the information in my resume.</p></div>
+        <div class="project-grid">
+          <article class="card project-card"><div class="project-top"><span class="project-number">PROJECT 01</span><span class="status">In progress</span></div><h3>Retail Sales Data Analysis</h3><p>Practice project focused on cleaning and organizing retail sales data, exploring sales by product/category and time period, and summarizing trends through charts or a dashboard.</p><div class="tag-list"><span class="tag">Data preparation</span><span class="tag">Trend analysis</span><span class="tag">Visualization</span></div></article>
+          <article class="card project-card"><div class="project-top"><span class="project-number">PROJECT 02</span><span class="status">Jun 2025 – May 2026</span></div><h3>Smart Patient Monitoring System</h3><p>Developed an IoT prototype to monitor vital health parameters using sensors and a microcontroller, with real-time monitoring and alerts.</p><div class="tag-list"><span class="tag">IoT</span><span class="tag">Sensors</span><span class="tag">Real-time monitoring</span></div></article>
+          <article class="card project-card"><div class="project-top"><span class="project-number">PROJECT 03</span><span class="status">Aug 2024 – May 2025</span></div><h3>Smart Car Parking System Using IoT</h3><p>Designed a sensor-based parking concept to identify available parking slots and provide real-time slot indication.</p><div class="tag-list"><span class="tag">IoT</span><span class="tag">Sensors</span><span class="tag">Automation concept</span></div></article>
+          <article class="card project-card"><div class="project-top"><span class="project-number">PROJECT 04</span><span class="status">Nov 2025 – May 2026</span></div><h3>IoT & Embedded Systems Development</h3><p>Worked on integrating sensors, microcontrollers, and communication modules for real-time data acquisition and monitoring.</p><div class="tag-list"><span class="tag">Embedded systems</span><span class="tag">Data acquisition</span><span class="tag">Communication modules</span></div></article>
+        </div>
+        <div class="note">Note: The resume describes the retail analytics project as in progress and does not confirm the final dataset, implementation tools, or dashboard. Add those details once the project is completed.</div>
+      </div>
+    </section>
+
+    <section id="certifications">
+      <div class="container">
+        <div class="section-heading"><div class="eyebrow">Professional development</div><h2>Certifications & activities</h2></div>
+        <div class="cert-grid">
+          <div class="card cert"><div class="cert-mark">N</div><div><h3>Introduction to Industry 4.0 and Industrial Internet of Things</h3><p>NPTEL · Jan–Apr 2024</p></div></div>
+          <div class="card cert"><div class="cert-mark">N</div><div><h3>Cryptography and Network Security</h3><p>NPTEL · Jan–May 2026</p></div></div>
+          <div class="card cert"><div class="cert-mark">U</div><div><h3>Analog Electronics</h3><p>Udemy · Sep 2024</p></div></div>
+          <div class="card cert"><div class="cert-mark">U</div><div><h3>Software Development</h3><p>Udemy · Ongoing</p></div></div>
+        </div>
+        <div class="about-grid" style="margin-top:18px">
+          <div class="card"><h3>Activities</h3><p>Volunteer at the KANAM inter-college event and member of the Open Source Club.</p></div>
+          <div class="card"><h3>Languages</h3><div class="tag-list"><span class="tag">Tamil — Native</span><span class="tag">English</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <div><div class="eyebrow">Let's connect</div><h2>Have an opportunity or idea?</h2><p>I’m happy to connect about internships, entry-level opportunities, data analytics, and technology projects.</p></div>
+          <div class="contact-links">
+            <a class="btn btn-primary" href="mailto:gobikan761@gmail.com">✉ Email me</a>
+            <a class="btn btn-secondary" href="https://www.linkedin.com/in/gobika-n-01957430a/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+            <a class="btn btn-secondary" href="https://github.com/23ec030-ship-it" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer><div class="container"><span>© <span id="year"></span> Gobika N</span><span>Designed with curiosity and a love for learning.</span></div></footer>
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    menuBtn.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(isOpen));
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
